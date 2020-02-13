@@ -1,0 +1,53 @@
+{
+  "components": {
+    "payloadAction": {},
+    "redAction": {},
+    "request": {},
+    "terminalOut": {
+      "toSayTextEmpty": "A behavior is require for linto output",
+      "toAskTextEmpty": "Conversational skill require a behavior for linto output",
+      "toAskDataEmpty": "Previous intent is require for trigger a conversational skill"
+    },
+    "wireEvent": {},
+    "wireNode": {
+      "noLinkedWire": "Node need to be linked",
+      "handlerError": "Error during node process"
+    }
+  },
+  "connect": {
+    "authToken": {
+      "initNotSupported" : "Token default init has paththrough until implemented",
+      "notSupported" : "Auth token is not yet supported, default paththrough"
+    },
+    "mqtt": {
+      "connect": "Connected",
+      "brokerDisconnected": "Broker connexion down",
+      "brokerError": "Mqtt broker error",
+      "brokerErrorConnect": "Unable to connect to Broker",
+      "brokerTimeout": "Unable to connect to Broker",
+      "clientIsConnected": "Mqtt client already connected",
+      "hostUndefined": "Mqtt host is undefined",
+      "subscribe": "Subscribed successfully to",
+      "subscribeError": "Error while subscrib to",
+      "subscribeRequireParam": "'subscribeToLinto' support only string or string array has linto id",
+      "unsubscribe": "Disconnecting while unsubscribing"
+    }
+  },
+  "exception": {
+    "connect": {},
+    "node": {}
+  },
+  "lexcicalSeeding": {},
+  "nodeRedTemplates": {
+    "coreNode": {},
+    "dictionaryCoreNode": {
+      "nameRequire": "Dictionary name is require",
+      "dataRequire": "Dictionary data is require"
+    },
+    "node": {},
+    "skillNode": {
+      "autoLoadParamError": "'autoload' require an array string has folder name to be loaded",
+      "autoLoadError": "Unable to load module"
+    }
+  }
+}
