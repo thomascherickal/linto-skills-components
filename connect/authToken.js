@@ -26,7 +26,7 @@ class AuthToken {
           if (error) {
             reject(error)
           }
-          resolve(response.statusCode)
+          resolve(response)
         })
       } catch (error) {
         reject(error)
