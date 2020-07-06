@@ -15,10 +15,7 @@
     }
   },
   "connect": {
-    "authToken": {
-      "initNotSupported" : "Token default init has paththrough until implemented",
-      "notSupported" : "Auth token is not yet supported, default paththrough"
-    },
+    "authToken": {},
     "mqtt": {
       "connect": "Connected",
       "brokerDisconnected": "Broker connexion down",

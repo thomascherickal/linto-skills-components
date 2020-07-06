@@ -21,8 +21,11 @@ class ConnectorMqtt {
 
     this.topicSubscribe = []
   }
-  async connect(host, port) {
+  async connect(flowMqttConfig) {
     let node = this.node
+
+    let host = flowMqttConfig.host
+    let port = flowMqttConfig.port
 
     if (!host || !port) {
       throw new HostUndefined(mqttLabel.hostUndefined)
@@ -33,6 +36,11 @@ class ConnectorMqtt {
     })
 
     let mqttConfig = this.mqttConfig
+
+    if (flowMqttConfig.user && flowMqttConfig.password) {
+      mqttConfig.username = flowMqttConfig.user
+      mqttConfig.password = flowMqttConfig.password
+    }
 
     return new Promise((resolve, reject) => {
       if (!this.client) { // Allow one connection by node component
