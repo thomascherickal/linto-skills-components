@@ -48,6 +48,7 @@ class ConnectorMqtt {
 
         this.client.on('error', e => {
           console.error(`${mqttLabel.brokerError} : ${e}`)
+          this.client.end()
           reject(`${mqttLabel.brokerError} : ${e}`)
         })
 
@@ -120,6 +121,10 @@ class ConnectorMqtt {
         onSubscribe.call(this, topic)
       }
     })
+  }
+
+  close() {
+    this.client.end()
   }
 }
 

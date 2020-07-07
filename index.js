@@ -1,6 +1,7 @@
 // Core Node
 const lintoNode = require('./node-red-templates/node')
 const lintoCoreNode = require('./node-red-templates/core-node')
+const lintoConnectCoreNode = require('./node-red-templates/connect-core-node')
 const lintoDictionaryCoreNode = require('./node-red-templates/dictionary-core-node')
 const lintoSkillNode = require('./node-red-templates/skill-node')
 
@@ -27,6 +28,7 @@ module.exports = {
   nodes: {
     lintoNode,
     lintoCoreNode,
+    lintoConnectCoreNode,
     lintoDictionaryCoreNode,
     lintoSkillNode,
   },

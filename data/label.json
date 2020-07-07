@@ -41,6 +41,7 @@
       "nameRequire": "Dictionary name is require",
       "dataRequire": "Dictionary data is require"
     },
+    "connectCoreNode": {},
     "node": {},
     "skillNode": {
       "autoLoadParamError": "'autoload' require an array string has folder name to be loaded",
