@@ -1,3 +1,6 @@
+# 0.0.5
+- Fix empty request
+
 # 0.0.4
 - Request component throw error when request failed
 

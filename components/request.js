@@ -15,7 +15,7 @@ class Request {
           if (error) {
             reject(error)
           }
-          if (response.statusCode >= 400) {
+          if (response === undefined || response.statusCode >= 400) {
             reject(new Error('Service error'))
           }
           resolve(body)
@@ -40,7 +40,7 @@ class Request {
           if (error) {
             reject(error)
           }
-          if (response.statusCode >= 400) {
+          if (response === undefined || response.statusCode >= 400) {
             reject(new Error('Service error'))
           }
           resolve(body)
