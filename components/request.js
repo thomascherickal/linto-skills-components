@@ -15,6 +15,9 @@ class Request {
           if (error) {
             reject(error)
           }
+          if (response.statusCode >= 400) {
+            reject(new Error('Service error'))
+          }
           resolve(body)
         })
       } catch (error) {
@@ -36,6 +39,9 @@ class Request {
         request.post(options, function (error, response, body) {
           if (error) {
             reject(error)
+          }
+          if (response.statusCode >= 400) {
+            reject(new Error('Service error'))
           }
           resolve(body)
         })

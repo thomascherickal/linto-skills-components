@@ -1,3 +1,6 @@
+# 0.0.4
+- Request component throw error when request failed
+
 # 0.0.3
 - Added connect node
 - Fix MQTT endless log
