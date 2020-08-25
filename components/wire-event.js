@@ -12,6 +12,7 @@ class WireEvent {
     } else {
       this.eventBaseName = EVENT_BASE_NAME
     }
+    this.eventOutputName = OUTPUT_NODE_NAME
     this.eventRegister = []
   }
 
@@ -22,6 +23,10 @@ class WireEvent {
 
   getBaseName() {
     return this.eventBaseName
+  }
+
+  getOutputName() {
+    return this.eventOutputName
   }
 
   subscribe(flowId, eventName, handler) {

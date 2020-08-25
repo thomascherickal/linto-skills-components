@@ -41,7 +41,7 @@ class Request {
             reject(error)
           }
           if (response === undefined || response.statusCode >= 400) {
-            reject(new Error('Service error'))
+            reject(response)
           }
           resolve(body)
         })
