@@ -60,7 +60,7 @@ class WireEvent {
 
         if (eventName !== OUTPUT_NODE_NAME) {
           let toLintoRes = {
-            topic: args[0].topic,
+            topic: args[0].payload.topic,
             payload: skillResult
           }
           node.wireEvent.notify(`${flowId}-${OUTPUT_NODE_NAME}`, toLintoRes)
