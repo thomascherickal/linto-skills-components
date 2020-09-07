@@ -60,7 +60,7 @@ class WireEvent {
 
         if (eventName !== OUTPUT_NODE_NAME) {
           let toLintoRes = {
-            topic: args[0].payload.topic,
+            topic: (args[0].topic) ? args[0].topic : args[0].payload.topic,
             payload: skillResult
           }
           node.wireEvent.notify(`${flowId}-${OUTPUT_NODE_NAME}`, toLintoRes)
@@ -91,7 +91,7 @@ class WireEvent {
     let event = `${this.eventBaseName}${eventName}`
     let result = Object.keys(this.redEvents._events).filter(name => name === event)
 
-    if (result.length === 0){
+    if (result.length === 0) {
       return false
     }
     return true
