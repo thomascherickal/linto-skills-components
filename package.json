@@ -1,10 +1,17 @@
 {
   "name": "@linto-ai/linto-components",
   "description": "All linto components used for making a linto skill",
-  "version": "0.0.5",
+  "version": "0.0.8",
   "main": "index.js",
   "author": "yhoupert@linagora.com",
-  "license": "ISC",
+  "license": "AGPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/linto-ai/linto-skills-components.git"
+  },
+  "bugs": {
+    "url": "https://github.com/linto-ai/linto-skills-components/issues"
+  },
   "dependencies": {
     "debug": "^4.1.1",
     "fs": "0.0.1-security",
