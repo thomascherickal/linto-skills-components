@@ -34,11 +34,12 @@ class WireEvent {
     this.redEvents.on(`${this.eventBaseName}${flowId}-${eventName}`, async (...args) => {
       try {
         let skillResult = await handler(...args)
-
+        console.log(`${flowId}-${OUTPUT_NODE_NAME}`)
         if (eventName !== OUTPUT_NODE_NAME) {
           let toLintoRes = {
-            topic: args[0].topic,
-            payload: skillResult
+            topic: args[0],
+            payload: skillResult,
+            transcript : args[0].payload.transcript.text
           }
           this.notify(`${flowId}-${OUTPUT_NODE_NAME}`, toLintoRes)
         }
@@ -57,11 +58,11 @@ class WireEvent {
       try {
         node.sendStatus('green', 'ring')
         let skillResult = await handler(...args)
-
         if (eventName !== OUTPUT_NODE_NAME) {
           let toLintoRes = {
             topic: (args[0].topic) ? args[0].topic : args[0].payload.topic,
-            payload: skillResult
+            payload: skillResult,
+            transcript : args[0].payload.transcript.text
           }
           node.wireEvent.notify(`${flowId}-${OUTPUT_NODE_NAME}`, toLintoRes)
         }
