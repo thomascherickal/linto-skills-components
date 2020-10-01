@@ -21,6 +21,25 @@ class RedAction {
     return null
   }
 
+    /**
+    * @summary Search a specific node based on their exact name
+    *  
+    * @param {String} flowId the flow id to search the node
+    * @param {String} nodeName the node name to get information
+    *
+    * @returns {Object} The N corresponding node based on their name
+  **/
+  findNodeType(flowId, nodeName) {
+    let findNode = undefined
+    this.nodes.eachNode((node) => {
+      if (node.z === flowId && !node.d && node.type === nodeName) {
+        findNode = node
+        return;
+      }
+    })
+    return findNode
+  }
+
   /**
     * @summary Search all specific node based on their name
     *  

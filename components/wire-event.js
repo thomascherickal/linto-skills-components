@@ -34,7 +34,6 @@ class WireEvent {
     this.redEvents.on(`${this.eventBaseName}${flowId}-${eventName}`, async (...args) => {
       try {
         let skillResult = await handler(...args)
-        console.log(`${flowId}-${OUTPUT_NODE_NAME}`)
         if (eventName !== OUTPUT_NODE_NAME) {
           let toLintoRes = {
             topic: args[0],

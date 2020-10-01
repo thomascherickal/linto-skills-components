@@ -76,7 +76,7 @@ class ConnectorMqtt {
   onMessage(handler, topicFilter) {
     this.client.on('message', (topic, payload) => {
       const [_clientCode, _channel, _sn, _etat, _type, _id] = topic.split('/')
-      if (_etat === topicFilter) {
+      if (topicFilter.indexOf(_etat) > -1) {
         handler(topic, payload)
       }
     })
