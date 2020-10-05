@@ -1,19 +1,45 @@
-const debug = require('debug')('linto:linto-components:template:node:dictionary-core')
-const CoreNode = require('./core-node')
-const connectNodeLabel = require('../data/label').nodeRedTemplates.connectCoreNode
+const debug = require('debug')('linto:linto-components:template:node:connect-core')
 const mqtt = require('../connect/mqtt')
+const fs = require('fs')
 
+const CoreNode = require('./core-node')
 
 class ConnectCoreNode extends CoreNode {
   constructor(node, config) {
     super(node, config)
     this.mqtt = new mqtt(this)
+    this.topicHandler = {}
   }
+
+  notifyEventError(topic, say, error) {
+    if (this.wireEvent) {
+      this.wireEvent.notify(`${this.node.z}-${this.wireEvent.getOutputName()}`, {
+        topic,
+        payload: {
+          say,    //phonetic and text
+          error
+        }
+      })
+    }else{
+      console.log('wire event is not define for connect-core-node')
+    }
+  }
+
 
   async configure(nodeComponentToLoad) {
     return new Promise(async (resolve, reject) => {
       onDeletedNode.call(this)
       resolve(this)
+    })
+  }
+
+  async autoloadTopic(pathDir) {
+    const dir = await fs.promises.readdir(pathDir)
+    dir.map(topicHandler => {
+      if (topicHandler.toLocaleLowerCase().indexOf('.js') !== -1) {
+        const name = topicHandler.split('.js')[0]
+        this.topicHandler[name] = require(`${pathDir}/${name}`)
+      }
     })
   }
 }
@@ -27,5 +53,6 @@ function onDeletedNode() {
     })
   }
 }
+
 
 module.exports = ConnectCoreNode
