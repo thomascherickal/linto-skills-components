@@ -20,6 +20,17 @@ class LintoCoreNode extends Node {
     }
     return undefined
   }
+
+  sendPayloadToLinTO(topic, payload) {
+    if (this.wireEvent) {
+      this.wireEvent.notify(`${this.node.z}-${this.wireEvent.getOutputName()}`, {
+        topic,
+        payload
+      })
+    } else {
+      console.log('wire event is not define for connect-core-node')
+    }
+  }
 }
 
 module.exports = LintoCoreNode
