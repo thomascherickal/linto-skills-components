@@ -82,14 +82,22 @@ class ConnectorMqtt {
     })
   }
 
-  publish(topic, payload) {
-    let node = this.node
-    this.client.publish(topic, payload, (err) => {
-      if (err) {
-        console.error(err)
-        node.sendStatus('red', 'ring', mqttLabel.brokerErrorConnect)
+  publish(topic, payload, qos = 2, retain = false, requireOnline = true) {
+    if (requireOnline === true) {
+      if (this.client.connected !== true) return
+
+      let node = this.node
+      const pubOptions = {
+        "qos": qos,
+        "retain": retain
       }
-    })
+      this.client.publish(topic, payload, pubOptions, (err) => {
+        if (err) {
+          console.error(err)
+          node.sendStatus('red', 'ring', mqttLabel.brokerErrorConnect)
+        }
+      })
+    }
   }
 
   subscribeToLinto(topicScope, ids = [], topicAction) {

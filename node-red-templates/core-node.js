@@ -21,11 +21,12 @@ class LintoCoreNode extends Node {
     return undefined
   }
 
-  sendPayloadToLinTO(topic, payload) {
+  sendPayloadToLinTO(topic, payload, qos = 2) {
     if (this.wireEvent) {
       this.wireEvent.notify(`${this.node.z}-${this.wireEvent.getOutputName()}`, {
         topic,
-        payload
+        payload,
+        qos
       })
     } else {
       console.log('wire event is not define for connect-core-node')
